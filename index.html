@@ -218,74 +218,69 @@
                         <span class="sr-only">Next</span>
                     </a>
                     <!-- jquery play/pause -->
-                    <div class="btn-group" id="carouselButton">
-                        <button class="btn btn-danger btn-sm" id="carouselPause">
-                            <i class="fa fa-pause"></i>
-                        </button>
-                        <button class="btn btn-danger btn-sm" id="carouselPlay">
-                            <i class="fa fa-play"></i>
-                        </button>
-                    </div>
+                    <button class="btn btn-danger btn-sm" id="carouselButton">
+                        <i class="fa fa-pause"></i>
+                    </button>
                 </div>
             </div>
         </div>
-        <!-- second row - discover & review-->
-        <div class="row row-content align-items-center">
-            <div class="col-sm-4 order-sm-last col-md-3">
-                <h2 class="text-sm-right">Discover & Review</h2>
-            </div>
-            <div class="col">
-                <div class="media">
-                    <img class="d-flex mr-3 img-thumbnail" src="images/breadcrumb-trail-thumb.jpg"
-                        alt="Breadcrumb Trail thumbnail">
-                    <div class="media-body align-self-center">
-                        <h3>Our Campsites</h3>
-                        <p class="d-none d-sm-block">Explore our growing database of curated campsites and leave your
-                            own
-                            reviews!</p>
-                    </div>
+    </div>
+    <!-- second row - discover & review-->
+    <div class="row row-content align-items-center">
+        <div class="col-sm-4 order-sm-last col-md-3">
+            <h2 class="text-sm-right">Discover & Review</h2>
+        </div>
+        <div class="col">
+            <div class="media">
+                <img class="d-flex mr-3 img-thumbnail" src="images/breadcrumb-trail-thumb.jpg"
+                    alt="Breadcrumb Trail thumbnail">
+                <div class="media-body align-self-center">
+                    <h3>Our Campsites</h3>
+                    <p class="d-none d-sm-block">Explore our growing database of curated campsites and leave your
+                        own
+                        reviews!</p>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!--third row - featured campsites-->
-        <div class="row row-content align-items-center">
-            <div class="col-sm-4 col-md-3">
-                <h2>Featured Campsites</h2>
-            </div>
-            <div class="col">
-                <div class="media">
+    <!--third row - featured campsites-->
+    <div class="row row-content align-items-center">
+        <div class="col-sm-4 col-md-3">
+            <h2>Featured Campsites</h2>
+        </div>
+        <div class="col">
+            <div class="media">
 
-                    <div class="media-body align-self-center">
-                        <h3>React Lake Campground</h3>
-                        <p class="d-none d-sm-block">Nestled in the foothills of the Chrome Mountains, this campground
-                            on
-                            the
-                            shores of the pristine React
-                            Lake is a favorite for fly fishers.</p>
-                    </div>
-                    <img class="d-flex ml-3 img-thumbnail" src="images/react-lake-thumb.jpg" alt="React Lake thumbnail">
+                <div class="media-body align-self-center">
+                    <h3>React Lake Campground</h3>
+                    <p class="d-none d-sm-block">Nestled in the foothills of the Chrome Mountains, this campground
+                        on
+                        the
+                        shores of the pristine React
+                        Lake is a favorite for fly fishers.</p>
+                </div>
+                <img class="d-flex ml-3 img-thumbnail" src="images/react-lake-thumb.jpg" alt="React Lake thumbnail">
+            </div>
+        </div>
+    </div>
+
+    <!--fourth row - our community partners-->
+    <div class="row row-content align-items-center">
+        <div class="col-sm-4 order-sm-last col-md-3">
+            <h2 class="text-sm-right">Our Community Partners</h2>
+        </div>
+        <div class="col">
+            <div class="media">
+                <img class="d-flex mr-3 img-thumbnail" src="images/bootstrap-thumb.png" alt="Boostrap Outfitters logo">
+                <div class="media-body align-self-center">
+                    <h3>Bootstrap Outfitters</h3>
+                    <p class="d-none d-sm-block">Bootstrap Outfitters supplies you with gear you need at prices you
+                        can't beat.</p>
                 </div>
             </div>
         </div>
-
-        <!--fourth row - our community partners-->
-        <div class="row row-content align-items-center">
-            <div class="col-sm-4 order-sm-last col-md-3">
-                <h2 class="text-sm-right">Our Community Partners</h2>
-            </div>
-            <div class="col">
-                <div class="media">
-                    <img class="d-flex mr-3 img-thumbnail" src="images/bootstrap-thumb.png"
-                        alt="Boostrap Outfitters logo">
-                    <div class="media-body align-self-center">
-                        <h3>Bootstrap Outfitters</h3>
-                        <p class="d-none d-sm-block">Bootstrap Outfitters supplies you with gear you need at prices you
-                            can't beat.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+    </div>
     </div>
 
     <!--footer-->
@@ -333,13 +328,17 @@
 
     <script>
         $(function () {
-            $(".carousel").carousel({ interval: 2000 }) //sets how long an image in the carousel pauses
-
-            $("#carouselPause").click(function () { //sets the pause behavior when clicked
-                $(".carousel").carousel("pause");
-            });
-            $("#carouselPlay").click(function () { //resumes the cycling of images when clicked
-                $(".carousel").carousel("cycle")
+            $(".carousel").carousel({ interval: 2000 });
+            $("#carouselButton").click(function () {
+                if ($("#carouselButton").children("i").hasClass("fa-pause")) {
+                    $(".carousel").carousel("pause");
+                    $("#carouselButton").children("i").removeClass("fa-pause");
+                    $("#carouselButton").children("i").addClass("fa-play");
+                } else {
+                    $(".carousel").carousel("cycle");
+                    $("#carouselButton").children("i").removeClass("fa-play");
+                    $("#carouselButton").children("i").addClass("fa-pause");
+                }
             });
         });
     </script>
